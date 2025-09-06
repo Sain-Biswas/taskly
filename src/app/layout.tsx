@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/integration/next-theme/provider";
+import { ReactQueryProvider } from "@/integration/react-query/provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/shadcn/ui/sonner";
 import { GeistMono } from "geist/font/mono";
@@ -25,8 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
+          <ReactQueryProvider>
+            {children}
+            <Toaster />
+          </ReactQueryProvider>
         </ThemeProvider>
       </body>
     </html>
