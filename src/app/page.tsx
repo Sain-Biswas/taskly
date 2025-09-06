@@ -1,3 +1,4 @@
+import { ModeToggleButton } from "@/integration/next-theme/mode-toggle-button";
 import Image from "next/image";
 
 export default function Home() {
@@ -51,6 +52,9 @@ export default function Home() {
           </a>
         </div>
       </main>
+
+      <ModeToggleButton />
+
       <footer className="row-start-3 flex flex-wrap items-center justify-center gap-[24px]">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
