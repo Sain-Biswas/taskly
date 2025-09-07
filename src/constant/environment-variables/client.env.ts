@@ -11,6 +11,7 @@ export const env = createEnv({
     NEXT_PUBLIC_NODE_ENV: z
       .enum(["development", "testing", "production"])
       .default("development"),
+    NEXT_PUBLIC_VERCEL_URL: z.url(),
   },
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
@@ -18,6 +19,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
+    NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

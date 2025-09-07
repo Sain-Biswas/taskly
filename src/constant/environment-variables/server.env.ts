@@ -1,5 +1,6 @@
-import { createEnv } from "@t3-oss/env-nextjs";
 import "server-only";
+
+import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
@@ -12,6 +13,11 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "testing", "production"])
       .default("development"),
+    VERCEL_URL: z.url(),
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_CLIENT_SECRET: z.string(),
+    GOOGLE_REFRESH_TOKEN: z.string(),
+    GOOGLE_CLIENT_EMAIL: z.email(),
   },
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
@@ -19,7 +25,13 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
-    NODE_ENV: process.env.NODE_ENV,
+    NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
+    VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
+
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GOOGLE_REFRESH_TOKEN: process.env.GOOGLE_REFRESH_TOKEN,
+    GOOGLE_CLIENT_EMAIL: process.env.GOOGLE_CLIENT_EMAIL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
