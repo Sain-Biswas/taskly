@@ -1,5 +1,6 @@
 import "server-only";
 
+import { version } from "@/../package.json";
 import { appRouter } from "@/server/orpc/app.route";
 import { createContext } from "@/server/orpc/context.orpc";
 import { onError } from "@orpc/client";
@@ -16,12 +17,12 @@ const handler = new OpenAPIHandler(appRouter, {
   ],
   plugins: [
     new OpenAPIReferencePlugin({
-      docsProvider: "scalar", // default: 'scalar'
+      docsProvider: "scalar",
       schemaConverters: [new ZodToJsonSchemaConverter()],
       specGenerateOptions: {
         info: {
-          title: "ORPC Playground",
-          version: "1.0.0",
+          title: "Taskly",
+          version,
         },
       },
     }),
